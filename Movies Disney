@@ -1,0 +1,8 @@
+create table movies 
+(id int primary key,
+title varchar (20),
+Director varchar (20),
+year int (4),
+Length_minutes int (3));
+
+insert into movies values(
