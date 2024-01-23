@@ -1,6 +1,4 @@
-drop table detalles;
-
-truncate table facturas;
+create table facturas
 
 INSERT INTO facturas (numero, fecha, cliente)
 VALUES
@@ -38,7 +36,9 @@ VALUES
   (32, '2020-02-25', 'Andrés Cruz'),
   (33, '2020-03-17', 'Gabriela Vargas'),
   (34, '2020-04-08', 'Miguel Flores'),
-  (35, '2020-05-19', 'Fernanda Mendoza'),
+  (35, '2020-05-19', 'Fernanda Mendoza');
+
+
   (36, '2020-06-27', 'Roberto Ríos'),
   (37, '2020-07-14', 'Paulina Acosta'),
   (38, '2020-08-29', 'Emilio Castro'),
