@@ -30,13 +30,14 @@
   select *
   from empleados
 
-
+INSERT 
   --Insetar un registro nuevo en tabla
 
   insert into empleados 
   values
   (16, 'Jose','Feliciano' , 35, 123456789, 'Calle primera num 1', '1980-06-03', 30000.00, 'SI');
 
+WHERE / > < = 
 -- Seleccionar todos los empleados con salarios mayores a 2000 pero mayores a 30 años
 -- Seleccionar todos los empleados con edad igual o menor a 30
 
@@ -48,10 +49,28 @@
   from empleados 
   where edad <= 30
 
+DELETE
 -- borrar el registro con id = 7 de la tabla 
 
   delete from empleados 
   where id_empleado = 7
+
+RENAME 
+-- Cambia el nombre de la columna id_empleado a ID
+ exec sp_rename 'empleados.id_empleado', 'ID'
+
+TOP 
+ -- Selecciona los primeros 5 empleados
+ -- Selecciona el 50 % de registros 
+
+select top 5 * 
+from empleados 
+
+select top 50 percent *
+from empleados 
+
+
+
 
 
 
