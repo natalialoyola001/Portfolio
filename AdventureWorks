@@ -2,6 +2,9 @@ select * from dbo.DimCustomer
 
 select * from dbo.FactInternetSales
 
+select * from dbo.dimproducts
+
+
 #1 Selecciona toda la cantidad de ventas de cada cliente ordenandolos en orden ascendente 
 
 select orderdate, salesamount, customerkey 
