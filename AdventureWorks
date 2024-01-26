@@ -2,21 +2,20 @@ select * from dbo.DimCustomer
 
 select * from dbo.FactInternetSales
 
--- Select the  sales amount and the customer key whith the order date in order asc
--- 
+#1 Selecciona toda la cantidad de ventas de cada cliente ordenandolos en orden ascendente 
 
 select orderdate, salesamount, customerkey 
 from dbo.FactInternetSales
 order by OrderDate asc
 
--- select the first name, last name and email adress with the sale order number and sale amount
+#2 Necesitamos saber a qué clientes pertenecen las cantidades de ventas
 
 select dc.firstname, dc.lastname,dc.emailaddress, fi.salesordernumber, fi.salesamount
 from FactInternetSales fi
 join dbo.dimcustomer dc
 on fi.CustomerKey = dc.CustomerKey
 
--- ordenados por sales amount de mayor a menor 
+#3 Ordenandolas de mayor venta a menor
 
 select dc.firstname, dc.lastname,dc.emailaddress, fi.salesordernumber, fi.salesamount
 from FactInternetSales fi
@@ -24,17 +23,17 @@ join dbo.dimcustomer dc
 on fi.CustomerKey = dc.CustomerKey
 order by salesamount desc
 
--- select the product key with the english product name and color 
+#4 Qué codigo pertenece a qué producto y color?
 
 select productkey, englishproductname, color
 from dbo.DimProduct
 
--- select all the colors
+#5 Qué colores hay?
 
 select distinct color 
 from dbo.DimProduct
 
--- select all the sales amount  from products red 
+#6 Cuales son las cantidades de venta de productos color Rojo?
 
 select dp.color, fi.salesamount
 from FactInternetSales fi
@@ -42,11 +41,13 @@ join dbo.DimProduct dp
 on dp.ProductKey = fi.ProductKey
 where dp.Color = 'Red'
 
--- select all the sales amount  from products red , white or black
+#7 Y de colores rojo, blanco y negro?
 
 select dp.color, fi.salesamount
 from FactInternetSales fi
 join dbo.DimProduct dp
 on dp.ProductKey = fi.ProductKey
 where dp.Color in('Red','White', 'Black')
+
+
 
