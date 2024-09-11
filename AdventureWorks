@@ -53,4 +53,53 @@ on dp.ProductKey = fi.ProductKey
 where dp.Color in('Red','White', 'Black')
 
 
+SELECT  * FROM  PRODUCTION.PRODUCT
+
+--- Selecciona el nombre y el precio de todos los productos que cuestan más de $100.
+
+SELECT 
+	a.name, a.ListPrice
+FROM
+	 production.product as a
+where 
+	a.ListPrice>100
+
+
+--- Muestra los productos cuya cantidad en stock (SafetyStockLevel) sea menor a 500, ordenados de manera ascendente por cantidad en stock.   (tabla: Production.Product)
+
+SELECT 
+	a.name , a.SafetyStockLevel
+FROM
+	 production.product as a
+where 
+	a.SafetyStockLevel<500
+order by a.SafetyStockLevel ASC
+
+
+--- Muestra el número total de productos por color (Color) para aquellos colores que tienen más de 20 productos.
+
+select 
+	count (a.color) as Total, a.color
+from 
+	production.product as a 
+group by 
+	a.color
+having 
+	count (a.color)>20
+
+--- Encuentra los 3 productos más pesados en la tabla Production.Product.
+
+select top 3
+	a.Weight,a.name
+from 
+	production.product as a 
+order by 
+	a.Weight desc
+
+---Lista todos los colores de productos distintos que existen en la tabla
+
+select 
+	distinct (a.color)
+from 
+	production.product as a
 
