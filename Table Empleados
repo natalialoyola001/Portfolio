@@ -1,4 +1,6 @@
- CREATE TABLE empleados (
+---- Ejercicios basicos en SQLServer
+
+CREATE TABLE empleados (
   id_empleado INT NOT NULL PRIMARY KEY,
   nombre VARCHAR(20) NOT NULL,
   apellido VARCHAR(30) NOT NULL,
