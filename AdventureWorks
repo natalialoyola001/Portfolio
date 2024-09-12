@@ -103,3 +103,111 @@ select
 from 
 	production.product as a
 
+-- Genere un SELECT a la tabla [Person]. [Person].
+
+SELECT 
+	*
+FROM 
+	[person].[person]
+
+-- Genere un SELECT a la tabla [Person]. [Person], únicamente de los campos BusinessEntityID, PersonType, FirstName y LastName.
+
+SELECT 
+	a.BusinessEntityID,
+	a.PersonType,
+	a.FirstName,
+	a.LastName
+FROM
+	[person].[person] AS a
+
+-- Genere un query con los mismos campos del punto número 2 donde PersonType sea igual a EM.
+
+SELECT 
+	a.BusinessEntityID,
+	a.PersonType,
+	a.FirstName,
+	a.LastName
+FROM
+	[person].[person] AS a
+WHERE 
+	a.PersonType='EM'
+
+-- Genere una consulta sobre la tabla [HumanResources]. [Employee] que muestre BusinessEntityID, NationalIDNumber y JobTitle, ordene los registros de mayor a menor por el campo BusinessEntityID.
+
+SELECT 
+	h.BusinessEntityID,
+	h.NationalIDNumber,
+	h.JobTitle
+FROM 
+	[HumanResources].[Employee] AS h
+ORDER BY 
+	h.BusinessEntityID DESC
+
+-- Genere una consulta sobre la tabla [HumanResources].[Employee] que muestre las JobTitle únicos, el campo JobTitle debe registrar en la consulta como Unicos.
+
+SELECT DISTINCT 
+	h.JobTitle
+FROM [HumanResources].[Employee] as h
+
+--Genere una consulta para todos los campos de la tabla [HumanResources]. [Employee] donde el BusinessEntityID sea mayor a 10.
+
+SELECT 
+	*
+FROM 
+	[HumanResources].[Employee] AS h
+WHERE 
+	h.BusinessEntityID>10
+
+-- Genere una consulta de todos los campos para la tabla [HumanResources]. [Employee] donde el JobTitle sea Sales Representative y el Gender F.
+
+SELECT 
+	*
+FROM 
+	[HumanResources].[Employee] AS h 
+WHERE 
+	h.JobTitle='Sales Representative' and h.Gender='F'
+
+-- Genere una consulta que permita obtener la cantidad por JobTitle. La consulta debe mostrar el campo JobTitle seguido de la cantidad que hay por dicho JobTitle, ordene de mayor a menor.
+
+SELECT 
+	h.jobtitle, 
+	COUNT(h.jobtitle) AS Cantidad
+FROM
+	[HumanResources].[Employee] AS h
+GROUP BY 
+	h.JobTitle 
+ORDER BY
+	h.JobTitle ASC
+
+-- Realice una consulta de la tabla [HumanResources]. [Employee] la cual indique el promedio del campo VacationHours donde el JobTitle sea Production Technician - WC50, el campo resultante del promedio debe llamarse Promedio.
+
+SELECT 
+	AVG(h.vacationhours) AS Promedio,
+	h.JobTitle
+FROM
+	[HumanResources].[Employee] AS h
+WHERE 
+	h.JobTitle='Production Technician - WC50'
+GROUP BY h.JobTitle
+
+-- Realice una consulta de la tabla [Sales]. [SalesPerson] la cual indique la suma total del campo SalesYTD, el nuevo campo resultante debe llamarse SumaTotal.
+
+SELECT 
+	SUM(s.salesYTD) AS SumaTotal
+FROM [Sales].[SalesPerson] as S
+
+-- Realice una consulta de la tabla [Sales]. [SalesPerson] la cual indique la suma total del campo SalesYTD donde el campo TerritoryID no sea NULL, el nuevo campo resultante debe llamarse SumaTotal.
+
+SELECT 
+	SUM(s.salesytd) AS SumaTotal
+FROM [Sales].[SalesPerson] AS s
+WHERE 
+	s.TerritoryID IS NOT NULL
+
+-- Genere una consulta a la tabla [Sales]. [SalesPerson] que indique el valor máximo y el valor mínimo del campo Bonus, los nuevos campos deben llamarse maximo y minimo respectivamente.
+
+SELECT 
+	MAX(s.bonus) AS Maximo,
+	MIN (s.bonus) AS Minimo
+FROM [Sales].[SalesPerson] as s
+
